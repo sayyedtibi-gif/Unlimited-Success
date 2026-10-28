@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlimited Success Video Editor</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
+        body { background-color: #121212; color: #fff; display: flex; flex-direction: column; height: 100vh; }
+        header { padding: 15px; text-align: center; background: #1e1e1e; border-bottom: 1px solid #333; }
+        h1 { font-size: 1.2rem; color: #00e676; }
+        .preview-container { flex: 1; display: flex; align-items: center; justify-content: center; background: #000; position: relative; }
+        video { max-width: 100%; max-height: 100%; }
+        .controls { padding: 15px; background: #1e1e1e; display: flex; flex-direction: column; gap: 10px; }
+        .btn-group { display: flex; gap: 10px; justify-content: center; }
+        button, label.btn { background: #2979ff; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: center; }
+        input[type="file"] { display: none; }
+        .timeline { height: 60px; background: #2a2a2a; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎬 Unlimited Success</h1>
+    </header>
+
+    <div class="preview-container">
+        <video id="videoPlayer" controls></video>
+    </div>
+
+    <div class="controls">
+        <div class="timeline" id="timeline">
+            قم باستيراد فيديو لبدء التعديل
+        </div>
+
+        <div class="btn-group">
+            <label class="btn" for="videoInput">➕ إضافة فيديو</label>
+            <input type="file" id="videoInput" accept="video/*">
+            <button id="trimBtn">✂️ قص المقطع</button>
+            <button id="filterBtn">🎨 إضافة فلتر</button>
+        </div>
+    </div>
+
+    <script>
+        const videoInput = document.getElementById('videoInput');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const timeline = document.getElementById('timeline');
+
+        videoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const fileURL = URL.createObjectURL(file);
+                videoPlayer.src = fileURL;
+                timeline.innerText = "تم تحميل: " + file.name;
+            }
+        });
+    </script>
+</body>
+</html>
+# Unlimited-Success
